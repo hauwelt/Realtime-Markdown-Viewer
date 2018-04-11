@@ -58,7 +58,7 @@ var parseNewLine = function(str) {
   var newLineRegExp = /(^|[^\n])\n{1}(?!\n)/;
   var stra = []; var tmp;
   while ((stra = newLineRegExp.exec(str)) !== null) {
-    tmp = stra[0].replace('\n', '<br/>')
+    tmp = stra[0].replace('\n', ' <br/>')
     str = str.replace(stra[0], tmp);
   }
   return str;
