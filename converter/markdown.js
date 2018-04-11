@@ -58,10 +58,19 @@ var parseStrong = function(str) {
   var newLineRegExp = /(\n)/;
   var stra = [];
   while ((stra = newLineRegExp.exec(str)) !== null) {
-    str = str.replace(stra[0], '<br/>');
+    str = str.replace(stra[0], ' <br/>');
   }
   return str;
  }
+
+ var parseCode = function(str) {
+ var codeRegExp = /`{1}(\w+)`{1}/;
+ var stra = [];
+ while ((stra = codeRegExp.exec(str)) !== null) {
+   str = str.replace(stra[0], '<pre>' + stra[1] + '</pre>');
+ }
+ return str;
+}
 
 
 var markdown = {
@@ -74,6 +83,7 @@ var markdown = {
     str = parseStrong(str);
     str = parseHorizontaleLine(str);
     str = parseLink(str);
+	str = parseCode(str);
     return str;
   }
 };
